@@ -24,5 +24,17 @@ public class OrderTest {
 		
 		order.confirm();
 	}
+	
+	@Test
+	public void confirmMethodShouldWorksFine(){
+		DateTimeUtils.setCurrentMillisFixed(System.currentTimeMillis());
+		Order order = new Order();
+		
+		order.submit();
+		
+		order.confirm();
+		
+		assertEquals(order.getOrderState(),Order.State.SUBMITTED);
+	}
 
 }
